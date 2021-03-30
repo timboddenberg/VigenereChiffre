@@ -1,51 +1,6 @@
-public class Encryption
+public class Encryption extends Cryption
 {
-    public Encryption()
-    {
-        ChiffreTable chiffreTable = new ChiffreTable();
-    }
-
-    private String key;
-    private String[] keySplitted;
-
-    private String message;
-    private String[] messageSplitted;
-
     private String cryptedMessage;
-
-    private ChiffreTable table = new ChiffreTable();
-    private String [][] chiffreTable = table.getChiffreTable();
-
-    public void setKey(String key)
-    {
-        this.key = key;
-    }
-
-    public void setMessage(String message)
-    {
-        this.message = message.replaceAll("\\s+","");
-        this.message = this.message.toLowerCase();
-        messageSplitted = splitString(this.message);
-    }
-
-    public void AdjustKeyToMessageLength()
-    {
-        int messageLength = message.length();
-
-        while (key.length() < messageLength)
-        {
-            key = key.concat(key);
-        }
-
-        if (key.length() > messageLength)
-        {
-            int difference = key.length() - messageLength;
-
-            key = key.substring(0, key.length() - difference);
-        }
-
-        keySplitted = splitString(key);
-    }
 
     public void EncryptMessage()
     {
@@ -68,15 +23,5 @@ public class Encryption
     public String getEncryptedMessage()
     {
         return cryptedMessage;
-    }
-
-    private String[] splitString(String string)
-    {
-        String[] splittedString = new String[string.length()];
-        for (int i=0; i< string.length(); i++)
-        {
-            splittedString[i] = Character.toString(string.charAt(i));
-        }
-        return splittedString;
     }
 }
