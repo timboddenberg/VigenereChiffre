@@ -1,3 +1,5 @@
+package Helpers;
+
 import java.lang.reflect.Parameter;
 import java.util.HashMap;
 import java.util.Locale;
@@ -5,28 +7,38 @@ import java.util.Map;
 
 public class OccurenceAnalysis
 {
-    public OccurenceAnalysis()
+    public OccurenceAnalysis(String message)
     {
         fillHashmap();
+        this.message = message;
     }
 
-    private String message;
+    private final String message;
 
     private Map<String, Integer> occurences = new HashMap<>();
 
     private String mostUsedLetter;
 
-    public void setMessage(String message)
+    public void analyzeMostUsedLetter(boolean printResult)
     {
-        this.message = message;
+        analyzeOccurences();
+        sortLettersByOccurence();
+
+        if (printResult)
+            printAnalyzedResult();
     }
 
-    public void printAnalyzedResult()
+    public String getMostUsedLetter()
+    {
+        return mostUsedLetter;
+    }
+
+    private void printAnalyzedResult()
     {
         System.out.println("Abbildung von " + mostUsedLetter + " auf e ist sehr wahrscheinlich");
     }
 
-    public void analyzeOccurences()
+    private void analyzeOccurences()
     {
         String currentLetter = "";
         for (int i=0; i < message.length(); i++)
@@ -36,7 +48,7 @@ public class OccurenceAnalysis
         }
     }
 
-    public void sortLettersByOccurence()
+    private void sortLettersByOccurence()
     {
         int highestInt = 0;
 

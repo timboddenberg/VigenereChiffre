@@ -1,3 +1,7 @@
+package Helpers;
+
+import Helpers.Alphabet;
+
 public class ChiffreTable
 {
     public ChiffreTable()

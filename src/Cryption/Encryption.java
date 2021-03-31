@@ -1,12 +1,16 @@
+package Cryption;
+
 public class Encryption extends Cryption
 {
-    private String cryptedMessage;
+    private String encryptedMessage;
 
-    public void EncryptMessage()
+    public void EncryptMessage(boolean printResult)
     {
+        AdjustKeyToMessageLength();
+
         int row;
         int column;
-        cryptedMessage = "";
+        encryptedMessage = "";
 
         for (int i = 0; i < message.length(); i++)
         {
@@ -14,14 +18,20 @@ public class Encryption extends Cryption
             column = table.getLetterPosition(messageSplitted[i]);
 
             if (row >= 0 && column >= 0)
-                cryptedMessage = cryptedMessage.concat(chiffreTable[row][column]);
+                encryptedMessage = encryptedMessage.concat(chiffreTable[row][column]);
             else
                 System.out.println("Es wurde keine Reihe für key " + keySplitted[i] + " und keine Spalte für " + messageSplitted[i] + " gefunden.");
+        }
+
+        if (printResult)
+        {
+            System.out.println("Verschlüsselte Nachricht: ");
+            System.out.println(encryptedMessage);
         }
     }
 
     public String getEncryptedMessage()
     {
-        return cryptedMessage;
+        return encryptedMessage;
     }
 }

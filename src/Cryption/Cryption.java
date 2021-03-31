@@ -1,3 +1,7 @@
+package Cryption;
+
+import Helpers.ChiffreTable;
+
 public class Cryption
 {
     protected String message;
@@ -13,7 +17,7 @@ public class Cryption
     {
         this.message = message.replaceAll("\\s+","");
         this.message = this.message.toLowerCase();
-        messageSplitted = splitString(message);
+        messageSplitted = splitString(this.message);
     }
 
     public String getMessage()
@@ -31,7 +35,7 @@ public class Cryption
         return key;
     }
 
-    public void AdjustKeyToMessageLength()
+    protected void AdjustKeyToMessageLength()
     {
         int messageLength = message.length();
 

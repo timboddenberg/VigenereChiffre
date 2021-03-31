@@ -1,9 +1,13 @@
+package Cryption;
+
 public class Decryption extends Cryption
 {
     private String decryptedMessage;
 
-    public void DecriptMessage()
+    public void DecriptMessage(boolean printResult)
     {
+        AdjustKeyToMessageLength();
+
         int row;
         int column;
         decryptedMessage = "";
@@ -17,6 +21,12 @@ public class Decryption extends Cryption
                 decryptedMessage = decryptedMessage.concat(chiffreTable[0][column]);
             else
                 System.out.println("Es wurde keine Reihe für key " + keySplitted[i] + " und keine Spalte für " + messageSplitted[i] + " gefunden.");
+        }
+
+        if (printResult)
+        {
+            System.out.println("Entschlüsselte Nachricht: ");
+            System.out.println(decryptedMessage);
         }
     }
 
