@@ -39,10 +39,14 @@ public class Cryption
     {
         int messageLength = message.length();
 
-        while (key.length() < messageLength)
+        if (key.length() > 0)
         {
-            key = key.concat(key);
+            while (key.length() < messageLength)
+            {
+                key = key.concat(key);
+            }
         }
+
 
         if (key.length() > messageLength)
         {
